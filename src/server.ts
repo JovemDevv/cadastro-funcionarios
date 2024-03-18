@@ -1,15 +1,14 @@
 // src/server.ts
 
 import express from "express";
-import funcionariosRouter from "./routes/funcionarios";
+import funcionariosRoutes from "./presentation/routes/funcionarios";
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use("/funcionarios", funcionariosRoutes);
 
-app.use("/api/funcionarios", funcionariosRouter);
-
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
 });
